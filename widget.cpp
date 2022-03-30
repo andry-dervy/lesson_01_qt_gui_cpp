@@ -62,9 +62,8 @@ void Widget::pbtn_calculate_the_third_party_clicked()
         return;
     }
 
-    const double PI = 3.141592653589793238463;
     if(ui->rbtn_radians->isChecked())
-        corner *= 180/PI;
+        corner *= 180/M_PI;
 
     if(corner >= 180)
     {
@@ -74,10 +73,10 @@ void Widget::pbtn_calculate_the_third_party_clicked()
 
     double side3 = std::sqrt(side1*side1 + side2*side2 - 2*side1*side2*std::cos(corner));
     ui->pte_Rezults->appendPlainText("Исходные данные:");
-    ui->pte_Rezults->appendPlainText("Длинна первой стороны треугольника: " + QString::number(side1));
-    ui->pte_Rezults->appendPlainText("Длинна второй стороны треугольника: " + QString::number(side2));
+    ui->pte_Rezults->appendPlainText("Длина первой стороны треугольника: " + QString::number(side1));
+    ui->pte_Rezults->appendPlainText("Длина второй стороны треугольника: " + QString::number(side2));
     ui->pte_Rezults->appendPlainText("Значение угла треугольника в градусах: " + QString::number(corner));
-    ui->pte_Rezults->appendPlainText("Расчетная длинна третьей стороны треугольника: " + QString::number(side3));
+    ui->pte_Rezults->appendPlainText("Расчетная длина третьей стороны треугольника: " + QString::number(side3));
 
 }
 void Widget::pbtn_decision_of_an_equation_clicked()
@@ -96,7 +95,7 @@ void Widget::pbtn_decision_of_an_equation_clicked()
 
     if(a == 0 && b == 0)
     {
-        ui->pte_Rezults->appendPlainText("Уровнение не имеет решения.");
+        ui->pte_Rezults->appendPlainText("Уравнение не имеет решения.");
         return;
     }
 
@@ -113,14 +112,12 @@ void Widget::pbtn_decision_of_an_equation_clicked()
     {
         QString s = QString::number(-1*b/(2*a));
         ui->pte_Rezults->appendPlainText("Уравнение имеет один действительный корень: " + s);
-        return;
     }
     else if(d > 0)
     {
         QString s1 = QString::number((-1*b + std::sqrt(d)) / (2*a));
         QString s2 = QString::number((-1*b - std::sqrt(d)) / (2*a));
         ui->pte_Rezults->appendPlainText("Уравнение имеет два действительных корня: x1 = " + s1 + " x2 = " + s2);
-        return;
     }
     else if(d < 0)
     {
@@ -128,7 +125,6 @@ void Widget::pbtn_decision_of_an_equation_clicked()
         QString im_s = QString::number(std::sqrt(std::fabs(d)) / (2*a));
         ui->pte_Rezults->appendPlainText("Уравнение имеет два комплексных корня: \nx1 = " + re_s + " + i*" + im_s +
                                          "\nx2 = " + re_s + " - i*" + im_s);
-        return;
     }
 }
 
