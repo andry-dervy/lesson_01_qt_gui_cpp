@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QDoubleValidator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -17,6 +18,7 @@ public:
 
 private:
     Ui::Widget *ui;
+    QDoubleValidator m_doubleValidator;
 
 private slots:
     void pbtn_decision_of_an_equation_clicked();

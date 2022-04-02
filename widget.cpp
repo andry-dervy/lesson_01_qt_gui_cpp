@@ -8,6 +8,14 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->le_a->setValidator(new QDoubleValidator(ui->le_a));
+    ui->le_b->setValidator(new QDoubleValidator(ui->le_b));
+    ui->le_c->setValidator(new QDoubleValidator(ui->le_c));
+
+    ui->le_corner->setValidator(new QDoubleValidator(ui->le_corner));
+    ui->le_side1->setValidator(new QDoubleValidator(ui->le_side1));
+    ui->le_side2->setValidator(new QDoubleValidator(ui->le_side2));
+
     connect(ui->pbtn_decision_of_an_equation,&QPushButton::clicked,
             this,&Widget::pbtn_decision_of_an_equation_clicked);
 
@@ -77,7 +85,6 @@ void Widget::pbtn_calculate_the_third_party_clicked()
     ui->pte_Rezults->appendPlainText("Длина второй стороны треугольника: " + QString::number(side2));
     ui->pte_Rezults->appendPlainText("Значение угла треугольника в градусах: " + QString::number(corner));
     ui->pte_Rezults->appendPlainText("Расчетная длина третьей стороны треугольника: " + QString::number(side3));
-
 }
 void Widget::pbtn_decision_of_an_equation_clicked()
 {
@@ -127,4 +134,3 @@ void Widget::pbtn_decision_of_an_equation_clicked()
                                          "\nx2 = " + re_s + " - i*" + im_s);
     }
 }
-
